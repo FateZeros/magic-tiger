@@ -15,3 +15,19 @@ pnpm add lint-staged prettier
 
 npx husky add .husky/pre-commit "lint-staged"
 ```
+
+## 镜像
+
+`pnpm config set registry https://registry.npmjs.org`
+
+```bash
+// 设置
+npm config set registry https://registry.npmmirror.com/
+yarn config set registry https://registry.npmmirror.com/
+pnpm config set registry https://registry.npmmirror.com/
+
+// 查看
+npm config get registry
+yarn config get registry
+pnpm config get registry
+```
