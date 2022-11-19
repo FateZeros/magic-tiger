@@ -11,5 +11,5 @@ const server = {
 // https://vitejs.dev/config/
 export default defineConfig({
     server,
-    plugins: [vue()],
+    plugins: [vue({ reactivityTransform: true })],
 });
