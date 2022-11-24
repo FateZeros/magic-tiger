@@ -1,5 +1,12 @@
 {
-    "compilerOptions": {},
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "extends": "@vue/tsconfig/tsconfig.web.json",
+    "references": [{ "path": "./tsconfig.config.json" }],
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["ES2018", "DOM", "DOM.Iterable"],
+        "paths": {
+            "@/*": ["./src/*"],
+        }
+    }
 }
