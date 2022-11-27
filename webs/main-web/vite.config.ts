@@ -10,6 +10,9 @@ const server = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    root: 'src/',
+    base: './',
     server,
     plugins: [vue({ reactivityTransform: true })],
+    build: {},
 });

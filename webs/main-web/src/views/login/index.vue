@@ -1,5 +1,5 @@
 <template>
-    <main class="v-app">11212113</main>
+    <div class="v-login">Login</div>
 </template>
 
 <script lang="ts" src="./index.ts"></script>
