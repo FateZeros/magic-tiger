@@ -1,7 +1,5 @@
 <template>
-    <main class="v-app">
-        <router-view />
-    </main>
+    <div class="v-500">500</div>
 </template>
 
 <script lang="ts" src="./index.ts"></script>

@@ -1,7 +1,5 @@
 <template>
-    <main class="v-app">
-        <router-view />
-    </main>
+    <div class="v-404">404</div>
 </template>
 
 <script lang="ts" src="./index.ts"></script>

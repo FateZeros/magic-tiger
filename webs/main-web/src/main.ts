@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 import type { Router } from 'vue-router';
 import App from '@/views/app/index.vue';
+import { initSetting } from '@/settings';
+import { setupRouter } from '@/router';
 
 const app = createApp(App);
 
