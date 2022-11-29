@@ -1,12 +1,13 @@
+import { merge } from 'lodash-es';
 /**
  * 默认参数
  */
 const defaultSetting: Record<string, string> = {
     /* 系统标题 */
-    APP_TITLE: '智慧虎',
+    APP_TITLE: '智枫',
 
     /* 系统副标题 */
-    APP_SUB_TITLE: 'Smart Tiger',
+    APP_SUB_TITLE: 'Smart Maple',
 };
 
 /**
@@ -16,6 +17,7 @@ const defaultSetting: Record<string, string> = {
 export function initSetting(setting = defaultSetting): Promise<any> {
     return new Promise(async (resolve, reject) => {
         try {
+            merge(window.commonSetting, setting);
             resolve(window.commonSetting);
         } catch (error) {
             console.log(error);

@@ -1,0 +1,173 @@
+/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable property-no-vendor-prefix */
+/* stylelint-disable selector-no-vendor-prefix */
+@use 'sass:math';
+
+// 宽高
+@mixin size($width: 100%, $height: 100%) {
+    width: $width;
+    height: $height;
+}
+
+// flex 布局
+@mixin flex($row: row, $justify-content: flex-start, $align-items: flex-start, $wrap: nowrap) {
+    display: flex;
+    flex-flow: $row $wrap;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
+
+// 字体
+@mixin font($font-size: $font-size-g, $font-weight: normal, $font-family: inherit) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    font-family: $font-family;
+}
+
+// 背景图片
+@mixin bg-img($url, $size: contain) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $size;
+}
+
+@mixin img($size: contain) {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: $size;
+}
+
+// 省略号
+@mixin ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+// 自定义行数省略号
+@mixin multiellipsis($line) {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+
+// 绝对定位
+@mixin absolute($top: unset, $right: unset, $bottom: unset, $left: unset) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// fixed 定位
+@mixin fixed($top: unset, $right: unset, $bottom: unset, $left: unset) {
+    position: fixed;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// 文字阴影
+@mixin text-shadow($color: $font-color-white-g, $shadow-color: $font-color-white-g) {
+    color: $color;
+    text-shadow: rgba($shadow-color, 1) 0 0 2px, rgba($shadow-color, 1) 0 0 4px, rgba($shadow-color, 1) 0 0 6px, rgba($color, 1) 0 0 20px;
+}
+
+// 默认图片(设置 image 标签默认图片)
+@mixin img-default($url) {
+    position: relative;
+
+    &::after {
+        @include size;
+        @include bg-img($url);
+        @include absolute($top: 0, $left: 0);
+
+        content: '';
+    }
+}
+
+// 低于 12px 字体(支持 chrome，需要自行调整宽高、布局)
+@mixin font-mini($font-size: 10px) {
+    font-size: 12px;
+    -webkit-transform: scale(math.div(math.round(math.div($font-size, 12px) * 100), 100));
+    transform-origin: left center;
+}
+
+// 边框
+@mixin border($size: 1px, $style: solid, $color: $font-color-white-g, $radius: 0) {
+    border: $size $style $color;
+    border-radius: $radius;
+}
+
+// 线性渐变
+@mixin linear-gradient($start, $end, $degrees: 0deg) {
+    background: linear-gradient($degrees, $start 0%, $end 100%);
+
+    /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, $start), color-stop(100%, $end));
+
+    /* w3c */
+    filter: progid:dximagetransform.microsoft.gradient(startcolorstr='$color-one', endcolorstr='$color-two', gradienttype=1);
+}
+
+// 居中
+@mixin center($center: all) {
+    position: absolute;
+
+    @if $center==vertical {
+        top: 50%;
+        bottom: unset;
+        transform: translateY(-50%);
+    } @else if $center==horizontal {
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    } @else {
+        top: 50%;
+        right: unset;
+        bottom: unset;
+        left: 50%;
+        transform: translate(math.round(-50%), math.round(-50%));
+    }
+}
+
+// 输入框 placeholder
+@mixin placeholder($color) {
+    ::placeholder {
+        color: $color;
+    }
+
+    // Safari and Chrome
+    ::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    // Firefox 18-
+    :-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+
+    // Internet Explorer 10+
+    :-ms-input-placeholder {
+        color: $color;
+    }
+}
+
+// 浏览器类型设置样式
+@mixin browser($name, $mac, $windows) {
+    [data-browser='mac'] & {
+        #{$name}: $mac;
+    }
+
+    [data-browser='windows'] & {
+        #{$name}: $windows;
+    }
+}

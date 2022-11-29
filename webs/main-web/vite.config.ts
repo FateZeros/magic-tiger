@@ -2,6 +2,10 @@ import { defineConfig, type Alias, type PluginOption, type UserConfig } from 'vi
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import compression from 'vite-plugin-compression';
+import zip from 'vite-plugin-zip-pack';
+
+// 打包产物目录
+const outDir = 'main-web';
 
 const server = {
     host: '0.0.0.0',
@@ -37,6 +41,15 @@ export default defineConfig(({ mode }): UserConfig => {
                 filter: /.*\/assets\/.*/,
             }),
         );
+
+        // zip
+        plugins.push(
+            zip({
+                inDir: `dist/${outDir}`,
+                outDir: 'dist',
+                outFileName: `${outDir}.zip`,
+            }),
+        );
     }
 
     return {
@@ -47,6 +60,23 @@ export default defineConfig(({ mode }): UserConfig => {
         plugins,
         resolve: {
             alias,
+        },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: `@import './src/assets/styles/common/mixin.scss';`,
+                },
+            },
+        },
+        build: {
+            emptyOutDir: true,
+            minify: 'terser',
+            outDir: path.resolve(__dirname, `./dist/${outDir}`),
+            rollupOptions: {
+                input: {
+                    index: path.resolve(__dirname, './src/index.html'),
+                },
+            },
         },
     };
 });

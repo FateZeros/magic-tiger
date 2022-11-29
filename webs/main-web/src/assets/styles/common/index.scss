@@ -1,0 +1,10 @@
+html,
+body {
+    background: var(#fff);
+}
+
+#app {
+    @include size;
+
+    overflow: hidden;
+}

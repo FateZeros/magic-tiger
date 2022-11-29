@@ -3,6 +3,7 @@ import type { Router } from 'vue-router';
 import App from '@/views/app/index.vue';
 import { initSetting } from '@/settings';
 import { setupRouter } from '@/router';
+import '@/assets';
 
 const app = createApp(App);
 
