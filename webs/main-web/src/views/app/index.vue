@@ -1,6 +1,8 @@
 <template>
     <main class="v-app">
-        <router-view />
+        <a-config-provider space="middle">
+            <router-view />
+        </a-config-provider>
     </main>
 </template>
 

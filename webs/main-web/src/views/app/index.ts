@@ -1,8 +1,13 @@
 import { defineComponent } from 'vue';
+import { useConfigProvider } from '@magic/hooks';
 
 export default defineComponent({
     name: 'VApp',
     setup() {
-        return {};
+        const { form } = useConfigProvider();
+
+        return {
+            form,
+        };
     },
 });

@@ -5,6 +5,7 @@
     "scripts": {
         "main:dev": "pnpm run --filter main-web dev",
         "main:build": "pnpm run --filter main-web build",
+        "hooks:build": "pnpm run --filter @magic/hooks build",
         "prepare": "husky install"
     },
     "keywords": [],
