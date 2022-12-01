@@ -9,7 +9,7 @@ export default defineConfig({
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             name: '@magic/hooks',
-            fileName: (format) => `@magic-hooks.${format}.js`,
+            fileName: (format) => `index.${format}.js`,
         },
         rollupOptions: {
             external: ['vue'],

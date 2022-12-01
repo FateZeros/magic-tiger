@@ -5,7 +5,7 @@ export default function useConfigProvider() {
     const form = {
         labelAlign: 'left',
         validateMessages: {
-            required: 'lable不能为空',
+            required: 'label不能为空',
         },
     };
 
