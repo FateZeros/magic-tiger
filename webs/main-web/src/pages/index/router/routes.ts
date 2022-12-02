@@ -8,7 +8,6 @@ export const rootRoutes: RouteRecordRaw[] = [
     {
         name: 'root',
         path: '/',
-        redirect: '/home',
         component: () => import('@/components/layout/index.vue'),
         children: appRoutes,
     },

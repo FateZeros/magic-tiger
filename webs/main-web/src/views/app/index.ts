@@ -5,7 +5,6 @@ export default defineComponent({
     name: 'VApp',
     setup() {
         const { form } = useConfigProvider();
-        console.log(form, 1111);
 
         return {
             form,
